@@ -1,1 +1,5 @@
 rootProject.name = 'java-instrumentation-template'
+include 'micronaut-data-tx-3.0.0'
+include 'micronaut-data-tx-4.0.0'
+include 'micronaut-aop-2.1.0'
+include 'micronaut-aop-4.0.0'
