@@ -3,6 +3,8 @@
 
 apply plugin: 'java'
 
+targetCompatibility=JavaVersion.VERSION_17
+
 dependencies {
   implementation 'io.micronaut.data:micronaut-data-runtime:4.0.0'
   implementation 'io.projectreactor:reactor-core:3.5.7'
