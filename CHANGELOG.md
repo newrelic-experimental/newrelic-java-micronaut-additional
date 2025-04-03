@@ -1,3 +1,6 @@
+## Version: [v1.0.0](https://github.com/newrelic-experimental/newrelic-java-micronaut-additional/releases/tag/v1.0.0) | Created: 2025-04-03
+
+
 ## Installation
 
 To install:
