@@ -28,7 +28,7 @@ jar {
 }
 
 verifyInstrumentation {
-	passes('io.micronaut:micronaut-aop:[4.0.0,)') {
+	passesOnly('io.micronaut:micronaut-aop:[4.0.0,)') {
 		compile 'org.reactivestreams:reactive-streams:1.0.4'
 	}
 }

@@ -4,7 +4,7 @@
 apply plugin: 'java'
 
 dependencies {
-   implementation("io.micronaut:micronaut-aop:3.0.0")
+   implementation("io.micronaut:micronaut-aop:2.1.0")
    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.7.0")
    implementation("org.reactivestreams:reactive-streams:1.0.4")
    // implementation 'javax.servlet:servlet-api:2.5'
@@ -26,7 +26,7 @@ jar {
 }
 
 verifyInstrumentation {
-	passes('io.micronaut:micronaut-aop:[2.1.0,4.0.0)') {
+	passesOnly('io.micronaut:micronaut-aop:[2.1.0,4.0.0)') {
 		compile 'org.reactivestreams:reactive-streams:1.0.4'
 	}
 	excludeRegex '.*4.0.0.*'

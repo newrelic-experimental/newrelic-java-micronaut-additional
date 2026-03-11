@@ -20,4 +20,14 @@ abstract class KotlinInterceptedMethodImpl_Intrumentation {
 	public CompletableFuture<Object> interceptResultAsCompletionStage() {
 		return Weaver.callOriginal();
 	}
+
+	@Trace(dispatcher = true)
+	public Object handleResult(Object result) {
+		return Weaver.callOriginal();
+	}
+
+	@Trace(dispatcher = true)
+	public <E extends Throwable> Object handleException(Exception exception) {
+		return Weaver.callOriginal();
+	}
 }
