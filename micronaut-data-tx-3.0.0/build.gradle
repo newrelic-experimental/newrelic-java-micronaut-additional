@@ -1,5 +1,5 @@
 
-// Build.gradle generated for instrumentation module micronaut-data-tx
+// Build.gradle generated for instrumentation module micronaut-data-tx-3.0.0
 
 apply plugin: 'java'
 
@@ -7,10 +7,10 @@ dependencies {
   implementation 'io.micronaut.data:micronaut-data-runtime:3.0.0'
   implementation 'io.projectreactor:reactor-core:3.5.7'
 
-   // New Relic Java Agent dependencies
-   implementation 'com.newrelic.agent.java:newrelic-agent:6.4.0'
-   implementation 'com.newrelic.agent.java:newrelic-api:6.4.0'
-   implementation fileTree(include: ['*.jar'], dir: '../libs')
+   // New Relic Labs Java Agent dependencies
+   implementation 'com.newrelic.agent.java:newrelic-agent:' + project.findProperty('java.agent.version')
+   implementation 'com.newrelic.agent.java:newrelic-api:' + project.findProperty('java.agent.version')
+   implementation 'com.newrelic.agent.java:agent-bridge:' + project.findProperty('java.agent.version')
    implementation fileTree(include: ['*.jar'], dir: '../test-lib')
 }
 
@@ -24,8 +24,8 @@ jar {
 }
 
 verifyInstrumentation {
-  passes ('io.micronaut.data:micronaut-data-tx:[3.0.0,4.0.0)') {
-  	compile 'io.projectreactor:reactor-core:3.5.7'
-  	}
+  passesOnly ('io.micronaut.data:micronaut-data-tx:[3.0.0,4.0.0)') {
+    implementation 'io.projectreactor:reactor-core:3.5.7'
+  }
   excludeRegex '.*M[0-9].*'
 }

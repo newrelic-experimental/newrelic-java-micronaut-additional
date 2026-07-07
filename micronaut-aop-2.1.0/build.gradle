@@ -1,5 +1,5 @@
 
-// Build.gradle generated for instrumentation module micronaut-aop
+// Build.gradle generated for instrumentation module micronaut-aop-2.1.0
 
 apply plugin: 'java'
 
@@ -7,12 +7,11 @@ dependencies {
    implementation("io.micronaut:micronaut-aop:3.0.0")
    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.7.0")
    implementation("org.reactivestreams:reactive-streams:1.0.4")
-   // implementation 'javax.servlet:servlet-api:2.5'
 
    // New Relic Labs Java Agent dependencies
-   implementation 'com.newrelic.agent.java:newrelic-agent:7.4.0'
-   implementation 'com.newrelic.agent.java:newrelic-api:7.4.0'
-   implementation fileTree(include: ['*.jar'], dir: '../libs')
+   implementation 'com.newrelic.agent.java:newrelic-agent:' + project.findProperty('java.agent.version')
+   implementation 'com.newrelic.agent.java:newrelic-api:' + project.findProperty('java.agent.version')
+   implementation 'com.newrelic.agent.java:agent-bridge:' + project.findProperty('java.agent.version')
    implementation fileTree(include: ['*.jar'], dir: '../test-lib')
 }
 
@@ -26,9 +25,8 @@ jar {
 }
 
 verifyInstrumentation {
-	passes('io.micronaut:micronaut-aop:[2.1.0,4.0.0)') {
-		compile 'org.reactivestreams:reactive-streams:1.0.4'
-	}
-	excludeRegex '.*4.0.0.*'
-	
+  passesOnly('io.micronaut:micronaut-aop:[2.1.0,4.0.0)') {
+    implementation 'org.reactivestreams:reactive-streams:1.0.4'
+  }
+  excludeRegex '.*4.0.0.*'
 }
